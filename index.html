@@ -284,6 +284,32 @@
   .review p { margin: 0 0 14px; color: var(--body); font-style: italic; }
   .review .who { font-weight: 700; color: var(--ink); font-size: 0.9rem; }
 
+  .leave-review {
+    margin: 40px auto 0; max-width: 640px;
+    border: 1px solid var(--line); border-radius: 16px;
+    background: #fff; padding: 30px;
+  }
+  .leave-review h3 { margin: 0 0 6px; font-size: 1.25rem; font-weight: 800; color: var(--ink); text-align: center; }
+  .leave-review .lr-sub { margin: 0 0 22px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+  .lr-stars { display: flex; justify-content: center; gap: 6px; margin-bottom: 20px; }
+  .lr-stars button {
+    background: none; border: none; font-size: 2rem; line-height: 1; cursor: pointer;
+    color: #d8dce1; padding: 0 2px; transition: color 0.12s ease;
+  }
+  .lr-stars button.on { color: #f5a623; }
+  .leave-review label {
+    display: block; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  .leave-review input, .leave-review textarea {
+    width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+    font: inherit; color: var(--ink); background: #fff; margin-bottom: 16px;
+  }
+  .leave-review textarea { min-height: 110px; resize: vertical; }
+  .leave-review input:focus, .leave-review textarea:focus { outline: none; border-color: var(--blue); }
+  .leave-review .btn { width: 100%; }
+  .lr-status { text-align: center; min-height: 1.2em; color: var(--blue); font-size: 0.9rem; margin-top: 10px; }
+
   /* ---------- ABOUT (placeholder) ---------- */
   .about-section { padding: 56px 0 16px; }
   .about-box {
@@ -553,6 +579,30 @@
           <div class="who">— Customer Name</div>
         </div>
       </div>
+
+      <!-- Leave a review (UI only — not wired to a backend) -->
+      <form class="leave-review" onsubmit="event.preventDefault(); submitReview(this);" novalidate>
+        <h3>Leave a Review</h3>
+        <p class="lr-sub">Had your car detailed by us? Let others know how it went.</p>
+
+        <div class="lr-stars" id="lrStars" role="radiogroup" aria-label="Star rating">
+          <button type="button" data-v="1" aria-label="1 star">★</button>
+          <button type="button" data-v="2" aria-label="2 stars">★</button>
+          <button type="button" data-v="3" aria-label="3 stars">★</button>
+          <button type="button" data-v="4" aria-label="4 stars">★</button>
+          <button type="button" data-v="5" aria-label="5 stars">★</button>
+        </div>
+        <input type="hidden" id="lrRating" name="rating" value="0" />
+
+        <label for="lrName">Your Name</label>
+        <input type="text" id="lrName" name="name" placeholder="First and last name" />
+
+        <label for="lrText">Your Review</label>
+        <textarea id="lrText" name="review" placeholder="Tell us about your experience…"></textarea>
+
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <div class="lr-status" id="lrStatus" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 
@@ -615,6 +665,35 @@
     }
     setInterval(function () { go((i + 1) % slides.length); }, 4000);
   })();
+
+  // Star rating + review submit (UI only)
+  (function () {
+    var stars = document.querySelectorAll('#lrStars button');
+    var ratingInput = document.getElementById('lrRating');
+    var rating = 0;
+    function paint(n) {
+      stars.forEach(function (s, idx) { s.classList.toggle('on', idx < n); });
+    }
+    stars.forEach(function (s) {
+      s.addEventListener('mouseenter', function () { paint(+s.dataset.v); });
+      s.addEventListener('click', function () {
+        rating = +s.dataset.v;
+        ratingInput.value = rating;
+        paint(rating);
+      });
+    });
+    document.getElementById('lrStars').addEventListener('mouseleave', function () { paint(rating); });
+  })();
+
+  function submitReview(form) {
+    var status = document.getElementById('lrStatus');
+    var rating = document.getElementById('lrRating').value;
+    if (rating === '0') { status.textContent = 'Please pick a star rating first.'; return; }
+    status.textContent = "Thanks for your review! (Preview only — not yet connected.)";
+    form.reset();
+    document.querySelectorAll('#lrStars button').forEach(function (s) { s.classList.remove('on'); });
+    document.getElementById('lrRating').value = '0';
+  }
 </script>
 
 </body>
