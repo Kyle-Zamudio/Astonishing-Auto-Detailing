@@ -96,14 +96,17 @@
 
   /* ---------- GALLERY / BANNER ---------- */
   .banner{position:relative;border-radius:20px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--line);aspect-ratio:21/8;}
-  @media (max-width:700px){.banner{aspect-ratio:4/3;}}
+  @media (max-width:700px){.banner{aspect-ratio:3/4;}}
   .slide{position:absolute;inset:0;display:flex;opacity:0;transition:opacity .7s ease;}
   .slide.active{opacity:1;}
-  .slide .half{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-weight:800;gap:6px;}
-  .slide .half.before{background:repeating-linear-gradient(45deg,#eef1f4 0 16px,#e7eaee 16px 32px);}
-  .slide .half.after{background:repeating-linear-gradient(45deg,#e8f1fb 0 16px,#def0ff 16px 32px);}
-  .slide .half span.tag{font-size:1.2rem;color:var(--ink);letter-spacing:.18em;}
-  .slide .half small{font-size:.7rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;}
+  .slide .half{position:relative;flex:1;overflow:hidden;}
+  .slide .half.before{border-right:2px solid #fff;}
+  .slide .half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .slide .half .tag{position:absolute;top:12px;left:12px;z-index:2;color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.16em;padding:6px 12px;border-radius:999px;}
+  .slide .half.before .tag{background:rgba(211,47,47,.88);}
+  .slide .half.after .tag{background:rgba(25,118,210,.9);}
+  .slide .cap{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;background:rgba(14,17,22,.8);color:#fff;font-size:.74rem;font-weight:700;letter-spacing:.04em;padding:7px 16px;border-radius:999px;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis;}
+  @media (max-width:700px){.slide{flex-direction:column;}.slide .half.before{border-right:0;border-bottom:2px solid #fff;}}
   .banner-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;}
   .banner-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(0,0,0,.22);cursor:pointer;padding:0;}
   .banner-dots button.on{background:var(--red);}
@@ -307,23 +310,41 @@
         <h2 class="sec-title">Before &amp; After</h2>
         <p class="sec-sub">See the transformation. Real results on real vehicles.</p>
       </div>
-      <!-- PLACEHOLDER rotating banner — swap .half blocks for real before/after photos -->
+      <!-- Real before/after photos, auto-rotating -->
       <div class="banner" id="banner" aria-label="Before and after gallery">
         <div class="slide active">
-          <div class="half before"><span class="tag">BEFORE</span><small>Placeholder</small></div>
-          <div class="half after"><span class="tag">AFTER</span><small>Placeholder</small></div>
+          <div class="half before"><span class="tag">BEFORE</span><img src="gallery/before1.jpg" alt="Toyota Tundra before exterior detail" /></div>
+          <div class="half after"><span class="tag">AFTER</span><img src="gallery/after1.jpg" alt="Toyota Tundra after exterior detail" /></div>
+          <div class="cap">Toyota Tundra — Exterior Wash &amp; Shine</div>
         </div>
         <div class="slide">
-          <div class="half before"><span class="tag">BEFORE</span><small>Placeholder</small></div>
-          <div class="half after"><span class="tag">AFTER</span><small>Placeholder</small></div>
+          <div class="half before"><span class="tag">BEFORE</span><img src="gallery/before2.jpg" loading="lazy" alt="Ford F-150 before exterior detail" /></div>
+          <div class="half after"><span class="tag">AFTER</span><img src="gallery/after2.jpg" loading="lazy" alt="Ford F-150 after exterior detail" /></div>
+          <div class="cap">Ford F-150 King Ranch — Exterior Detail</div>
         </div>
         <div class="slide">
-          <div class="half before"><span class="tag">BEFORE</span><small>Placeholder</small></div>
-          <div class="half after"><span class="tag">AFTER</span><small>Placeholder</small></div>
+          <div class="half before"><span class="tag">BEFORE</span><img src="gallery/before3.jpg" loading="lazy" alt="Cargo area before pet hair removal" /></div>
+          <div class="half after"><span class="tag">AFTER</span><img src="gallery/after3.jpg" loading="lazy" alt="Cargo area after pet hair removal" /></div>
+          <div class="cap">Pet Hair Removal — Cargo Area</div>
+        </div>
+        <div class="slide">
+          <div class="half before"><span class="tag">BEFORE</span><img src="gallery/before4.jpg" loading="lazy" alt="Floor carpet before pet hair removal" /></div>
+          <div class="half after"><span class="tag">AFTER</span><img src="gallery/after4.jpg" loading="lazy" alt="Floor carpet after pet hair removal" /></div>
+          <div class="cap">Pet Hair Removal — Floor Carpet</div>
+        </div>
+        <div class="slide">
+          <div class="half before"><span class="tag">BEFORE</span><img src="gallery/before5.jpg" loading="lazy" alt="Interior panel before stain removal" /></div>
+          <div class="half after"><span class="tag">AFTER</span><img src="gallery/after5.jpg" loading="lazy" alt="Interior panel after stain removal" /></div>
+          <div class="cap">Stain Removal — Interior Panel</div>
+        </div>
+        <div class="slide">
+          <div class="half before"><span class="tag">BEFORE</span><img src="gallery/before6.jpg" loading="lazy" alt="Interior before full cleanout" /></div>
+          <div class="half after"><span class="tag">AFTER</span><img src="gallery/after6.jpg" loading="lazy" alt="Interior after full cleanout" /></div>
+          <div class="cap">Full Interior Cleanout</div>
         </div>
         <div class="banner-dots" id="bannerDots"></div>
       </div>
-      <p class="banner-cap">Rotating before &amp; after photos — placeholder slides until real photos are added.</p>
+      <p class="banner-cap">Real before &amp; after results — Astonishing Auto Detailing.</p>
     </div>
   </section>
 
