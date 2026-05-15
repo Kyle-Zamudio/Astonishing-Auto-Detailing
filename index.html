@@ -176,6 +176,10 @@
   .video-meta p{margin:0;color:var(--muted);font-size:.9rem;}
 
   /* ---------- REVIEWS ---------- */
+  .rev-video{max-width:340px;margin:0 auto 44px;}
+  .rev-video .rv-frame{position:relative;aspect-ratio:9/16;background:#000;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 44px -30px rgba(14,17,22,.4);}
+  .rev-video .rv-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .rev-video .rv-cap{text-align:center;margin-top:14px;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
   .rev-carousel{position:relative;max-width:760px;margin:0 auto;}
   .rev-viewport{overflow:hidden;}
   .rev-track{display:flex;transition:transform .6s ease;}
@@ -468,7 +472,7 @@
       <div class="videos">
         <article class="video-card">
           <div class="video-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/gqybyTjhOaU"
+            <iframe src="https://www.youtube-nocookie.com/embed/y75J_AHncoQ"
               title="Silver Package — Detail Work" loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -517,6 +521,18 @@
         <h2 class="sec-title">What customers say.</h2>
         <p class="sec-sub">Placeholder reviews — replace with real customer testimonials.</p>
       </div>
+
+      <!-- Featured customer video review -->
+      <div class="rev-video">
+        <div class="rv-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/gqybyTjhOaU"
+            title="Customer video review — Astonishing Auto Detailing" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="rv-cap">★ Customer Video Review ★</div>
+      </div>
+
       <!-- PLACEHOLDER reviews — auto-rotating carousel (replace text with real testimonials) -->
       <div class="rev-carousel">
         <button class="rev-arrow prev" id="revPrev" aria-label="Previous review">‹</button>
