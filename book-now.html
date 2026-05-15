@@ -18,11 +18,9 @@
   .btn-ghost{background:transparent;color:var(--ink);border-color:#d4d8df;}.btn-ghost:hover{border-color:var(--ink);}
   .nav{position:sticky;top:0;z-index:50;background:var(--dark);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:62px;max-width:1180px;margin:0 auto;}
-  .nav-brand{font-weight:900;color:#fff;font-size:1.02rem;}.nav-brand span{color:var(--red);}
-  .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0;}
+  .nav-links{display:flex;flex:1;justify-content:space-evenly;gap:30px;list-style:none;margin:0;padding:0;}
   .nav-links a{color:#cdd2db;font-size:.86rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
   .nav-links a:hover{color:#fff;}
-  .nav-call{background:var(--red);color:#fff;padding:9px 18px;border-radius:999px;font-weight:800;font-size:.9rem;}
   @media (max-width:880px){.nav-links{display:none;}}
   .page-head{text-align:center;padding:56px 0 12px;}
   .page-head img{height:120px;width:auto;margin:0 auto 22px;border-radius:10px;}
@@ -49,14 +47,12 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">ASTONISHING <span>AUTO DETAILING</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#packages">Packages</a></li>
       <li><a href="index.html#how">How It Works</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="tel:5404409274" class="nav-call">540-440-9274</a>
   </div>
 </nav>
 
@@ -69,21 +65,27 @@
 </div>
 
 <div class="wrap">
-  <div class="card">
-    <!-- PLACEHOLDER booking form — UI only, not connected to scheduling/backend -->
-    <div class="note">Preview only — this booking form isn't connected yet. To book now, call or text <strong>540-440-9274</strong>.</div>
+  <!-- Booking form -> emails astonishingautodetailing@gmail.com via FormSubmit (free, no backend).
+       FIRST submission triggers a one-time activation email to that inbox; click the link once
+       and all future booking requests deliver automatically. -->
+  <form class="card" action="https://formsubmit.co/astonishingautodetailing@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New booking request — Astonishing Auto Detailing website" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_next" value="https://kyle-zamudio.github.io/Astonishing-Auto-Detailing/book-now.html" />
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+    <div class="note">Sent straight to Astonishing Auto Detailing. Prefer to book by phone? Call or text <strong>540-440-9274</strong>.</div>
 
     <div class="row">
-      <div><label for="fn">First Name</label><input id="fn" type="text" placeholder="First name" /></div>
-      <div><label for="ln">Last Name</label><input id="ln" type="text" placeholder="Last name" /></div>
+      <div><label for="fn">First Name</label><input id="fn" name="first_name" type="text" placeholder="First name" required /></div>
+      <div><label for="ln">Last Name</label><input id="ln" name="last_name" type="text" placeholder="Last name" required /></div>
     </div>
     <div class="row">
-      <div><label for="ph">Phone</label><input id="ph" type="tel" placeholder="(540) 555-0123" /></div>
-      <div><label for="em">Email</label><input id="em" type="email" placeholder="you@email.com" /></div>
+      <div><label for="ph">Phone</label><input id="ph" name="phone" type="tel" placeholder="(540) 555-0123" required /></div>
+      <div><label for="em">Email</label><input id="em" name="email" type="email" placeholder="you@email.com" required /></div>
     </div>
 
     <label for="pkg">Package</label>
-    <select id="pkg">
+    <select id="pkg" name="package">
       <option>Silver Package — $150</option>
       <option selected>Gold Package — $250</option>
       <option>Platinum Package — $350</option>
@@ -91,21 +93,20 @@
     </select>
 
     <div class="row">
-      <div><label for="dt">Preferred Date</label><input id="dt" type="date" /></div>
-      <div><label for="vh">Vehicle</label><input id="vh" type="text" placeholder="Year / Make / Model" /></div>
+      <div><label for="dt">Preferred Date</label><input id="dt" name="preferred_date" type="date" /></div>
+      <div><label for="vh">Vehicle</label><input id="vh" name="vehicle" type="text" placeholder="Year / Make / Model" /></div>
     </div>
 
     <label for="addr">Service Address</label>
-    <input id="addr" type="text" placeholder="Where should we come to?" />
+    <input id="addr" name="service_address" type="text" placeholder="Where should we come to?" />
 
     <label for="msg">Notes</label>
-    <textarea id="msg" placeholder="Pet hair, stains, anything we should know…"></textarea>
+    <textarea id="msg" name="notes" placeholder="Pet hair, stains, anything we should know…"></textarea>
 
-    <button class="btn btn-primary btn-full" onclick="document.getElementById('bkStatus').textContent='Thanks! We\'ll confirm your appointment shortly. (Preview only — not yet connected.)';">Request Appointment</button>
-    <div class="status" id="bkStatus" aria-live="polite"></div>
+    <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
 
     <div style="text-align:center;"><a href="index.html" class="back">← Back to home</a></div>
-  </div>
+  </form>
 </div>
 
 <footer class="ft">

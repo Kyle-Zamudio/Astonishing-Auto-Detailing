@@ -17,11 +17,9 @@
   .btn-primary{background:var(--red);color:#fff;}.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);}
   .nav{position:sticky;top:0;z-index:50;background:var(--dark);}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:62px;max-width:1180px;margin:0 auto;}
-  .nav-brand{font-weight:900;color:#fff;font-size:1.02rem;}.nav-brand span{color:var(--red);}
-  .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0;}
+  .nav-links{display:flex;flex:1;justify-content:space-evenly;gap:30px;list-style:none;margin:0;padding:0;}
   .nav-links a{color:#cdd2db;font-size:.86rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
   .nav-links a:hover{color:#fff;}
-  .nav-call{background:var(--red);color:#fff;padding:9px 18px;border-radius:999px;font-weight:800;font-size:.9rem;}
   @media (max-width:880px){.nav-links{display:none;}}
   .page-head{text-align:center;padding:56px 0 12px;}
   .page-head img{height:120px;width:auto;margin:0 auto 22px;border-radius:10px;}
@@ -54,14 +52,12 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">ASTONISHING <span>AUTO DETAILING</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#packages">Packages</a></li>
       <li><a href="index.html#how">How It Works</a></li>
       <li><a href="book-now.html">Book Now</a></li>
     </ul>
-    <a href="tel:5404409274" class="nav-call">540-440-9274</a>
   </div>
 </nav>
 
@@ -82,8 +78,7 @@
       </div>
       <div class="info-row">
         <div class="ico">✉</div>
-        <!-- PLACEHOLDER email — replace with real address -->
-        <div><div class="lbl">Email</div><a href="mailto:hello@astonishingdetailing.com" class="val">hello@astonishingdetailing.com</a></div>
+        <div><div class="lbl">Email</div><a href="mailto:astonishingautodetailing@gmail.com" class="val">astonishingautodetailing@gmail.com</a></div>
       </div>
       <div class="info-row">
         <div class="ico">📍</div>
@@ -96,21 +91,26 @@
       </div>
     </div>
 
-    <div class="card">
-      <!-- PLACEHOLDER contact form — UI only, not connected to a backend -->
-      <div class="note">Preview only — this form isn't connected yet. To reach us now, call or text <strong>540-440-9274</strong>.</div>
+    <!-- Contact form -> emails astonishingautodetailing@gmail.com via FormSubmit (free, no backend).
+         FIRST submission triggers a one-time activation email to that inbox; click the link once
+         and all future submissions deliver automatically. -->
+    <form class="card" action="https://formsubmit.co/astonishingautodetailing@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New contact message — Astonishing Auto Detailing website" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://kyle-zamudio.github.io/Astonishing-Auto-Detailing/contact.html" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="note">Sent straight to Astonishing Auto Detailing. Prefer to talk now? Call or text <strong>540-440-9274</strong>.</div>
       <label for="nm">Name</label>
-      <input id="nm" type="text" placeholder="Your name" />
+      <input id="nm" name="name" type="text" placeholder="Your name" required />
       <label for="em">Email</label>
-      <input id="em" type="email" placeholder="you@email.com" />
+      <input id="em" name="email" type="email" placeholder="you@email.com" required />
       <label for="ph">Phone</label>
-      <input id="ph" type="tel" placeholder="(540) 555-0123" />
+      <input id="ph" name="phone" type="tel" placeholder="(540) 555-0123" />
       <label for="msg">Message</label>
-      <textarea id="msg" placeholder="How can we help?"></textarea>
-      <button class="btn btn-primary btn-full" onclick="document.getElementById('ctStatus').textContent='Thanks! We\'ll be in touch shortly. (Preview only — not yet connected.)';">Send Message</button>
-      <div class="status" id="ctStatus" aria-live="polite"></div>
+      <textarea id="msg" name="message" placeholder="How can we help?" required></textarea>
+      <button type="submit" class="btn btn-primary btn-full">Send Message</button>
       <div style="text-align:center;"><a href="index.html" class="back">← Back to home</a></div>
-    </div>
+    </form>
   </div>
 </div>
 
