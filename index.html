@@ -191,8 +191,7 @@
   .video-meta p{margin:0;color:var(--muted);font-size:.9rem;}
 
   /* ---------- REVIEWS ---------- */
-  .rev-videos{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:0 auto 44px;}
-  .rev-video{max-width:340px;margin:0;}
+  .rev-video{max-width:340px;margin:0 auto 44px;}
   .rev-video .rv-frame{position:relative;aspect-ratio:9/16;background:#000;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 44px -30px rgba(14,17,22,.4);}
   .rev-video .rv-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   .rev-video .rv-cap{text-align:center;margin-top:14px;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
@@ -237,6 +236,10 @@
   .about-actions figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 14px 36px -28px rgba(14,17,22,.3);}
   .about-actions img{display:block;width:100%;height:240px;object-fit:cover;}
   .about-actions figcaption{padding:13px 14px;font-size:.85rem;font-weight:700;color:var(--ink);text-align:center;}
+  .about-video{max-width:340px;margin:46px auto 0;text-align:center;}
+  .about-video .av-frame{position:relative;aspect-ratio:9/16;background:#000;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 44px -30px rgba(14,17,22,.4);}
+  .about-video .av-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .about-video .av-cap{margin-top:14px;font-size:.82rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);}
 
   /* ---------- CTA BAND ---------- */
   .cta-band{position:relative;overflow:hidden;background:var(--dark);color:#fff;text-align:center;}.cta-band::before{content:"";position:absolute;inset:0;background:url("https://picsum.photos/seed/astonishing-cta/1600/500") center/cover;opacity:.16;}.cta-band>.container{position:relative;z-index:1;}
@@ -564,26 +567,15 @@
         <p class="sec-sub">Placeholder reviews. Replace with real customer testimonials.</p>
       </div>
 
-      <!-- Featured videos beside the reviews -->
-      <div class="rev-videos">
-        <div class="rev-video">
-          <div class="rv-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/gqybyTjhOaU"
-              title="Customer video review, Astonishing Auto Detailing" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-          </div>
-          <div class="rv-cap">★ Customer Video Review ★</div>
+      <!-- Featured customer video review -->
+      <div class="rev-video">
+        <div class="rv-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/gqybyTjhOaU"
+            title="Customer video review, Astonishing Auto Detailing" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
-        <div class="rev-video">
-          <div class="rv-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/RPandibnoSY"
-              title="Gold Package Hot Rod" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-          </div>
-          <div class="rv-cap">Gold Package · Hot Rod</div>
-        </div>
+        <div class="rv-cap">★ Customer Video Review ★</div>
       </div>
 
       <!-- PLACEHOLDER reviews, auto-rotating carousel (replace text with real testimonials) -->
@@ -678,6 +670,15 @@
         <figure><img src="gallery/action1.jpg" alt="Owner hand-washing a soapy car" loading="lazy" /><figcaption>Hands-on hand wash</figcaption></figure>
         <figure><img src="gallery/action2.jpg" alt="Foam washing beside the company van" loading="lazy" /><figcaption>We come to you</figcaption></figure>
         <figure><img src="gallery/gear.jpg" alt="Professional detailing equipment" loading="lazy" /><figcaption>Top-of-the-line equipment</figcaption></figure>
+      </div>
+      <div class="about-video">
+        <div class="av-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/RPandibnoSY"
+            title="Recent detail by Astonishing Auto Detailing" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="av-cap">Watch a recent detail</div>
       </div>
     </div>
   </section>
